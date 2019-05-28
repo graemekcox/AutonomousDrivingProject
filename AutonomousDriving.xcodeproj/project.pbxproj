@@ -241,6 +241,36 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T54U3D8D38;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include\n/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/\n/usr/local/Cellar/opencv/HEAD-b398b57/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+				);
+				OTHER_LDFLAGS = (
+					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include/opencv",
+					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"-L/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"-lopencv_calib3d",
+					"-lopencv_contrib",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_gpu",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_legacy",
+					"-lopencv_ml",
+					"-lopencv_nonfree",
+					"-lopencv_objdetect",
+					"-lopencv_ocl",
+					"-lopencv_photo",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -250,6 +280,36 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T54U3D8D38;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include\n/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/\n/usr/local/Cellar/opencv/HEAD-b398b57/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+				);
+				OTHER_LDFLAGS = (
+					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include/opencv",
+					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"-L/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"-lopencv_calib3d",
+					"-lopencv_contrib",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_gpu",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_legacy",
+					"-lopencv_ml",
+					"-lopencv_nonfree",
+					"-lopencv_objdetect",
+					"-lopencv_ocl",
+					"-lopencv_photo",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
