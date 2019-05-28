@@ -12,11 +12,12 @@
 using namespace std;
 using namespace cv;
 
+void displayOriginal(Mat image);
 void displayBrightness(Mat image);
 
 int main(int argc, const char * argv[]) {
     
-    Mat image = imread("/Users/graemecox/Documents/Programming/Projects/AutonomousDriving/AutonomousDriving/car.jpg");
+    Mat image = imread("/Users/graemecox/Documents/Programming/Projects/AutonomousDriving/AutonomousDriving/solidYellowLeft.jpg");
     
     if (image.empty()){
         cout << "Could not open or find the image" << endl;
@@ -24,10 +25,19 @@ int main(int argc, const char * argv[]) {
         return -1;
         
     }
-    
-    displayBrightness(image);
+    displayOriginal(image);
+//    displayBrightness(image);
     
     return 0;
+}
+
+void displayOriginal(Mat image) {
+    String windowname = "Original";
+    
+    namedWindow(windowname, WINDOW_NORMAL);
+    imshow(windowname, image);
+    waitKey(0);
+    destroyWindow(windowname);
 }
 
 void displayBrightness(Mat image) {
