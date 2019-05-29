@@ -25,7 +25,7 @@ Mat getHoughLines(Mat src);
 
 int main(int argc, const char * argv[])
 {
-    ImageClass* image = new ImageClass("/Users/jaredcox/Documents/Programming/Projects/AutonomousDrivingProject/AutonomousDriving/Resources/Images/solidYellowLeft.jpg");
+    ImageClass* image = new ImageClass(IMAGE_PATH);
     
     if (image->originalImage.empty())
     {
