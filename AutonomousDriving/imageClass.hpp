@@ -16,6 +16,7 @@ class ImageClass
 {
 public:
     cv::Mat originalImage;
+    cv::Mat blurredImage;
     cv::Mat filteredImage;
     cv::Mat maskedImage;
     cv::Mat cannyImage;
@@ -26,6 +27,14 @@ public:
     {
         originalImage =  cv::imread(pathToImage);
     };
+    
+    // Filtering state
+    // use homogenous smoothing for some dirty filtering
+    void blurImage(cv::Size size)
+    {
+        blurredImage = originalImage.clone();
+        //blur(blurredImage, cv::dst, size);
+    }
     
     // Gaussian blurring with Gaussian kernel
     void filterImage(int sigma_x = 0, int sigma_y = 0, int kernel_size = 3)
@@ -134,6 +143,25 @@ public:
     void addWeightsToImage(double alpha, double beta, double gamma)
     {
         addWeighted(cdstImage, alpha, originalImage, beta, gamma, weightedImage);
+    }
+    
+    void displayAllImages()
+    {
+        std::string orig = "Original Image";
+        cv::namedWindow(orig, cv::WINDOW_NORMAL);
+        imshow(orig, originalImage);
+        
+        std::string filter_name = "Gaussian blur filtered image";
+        cv::namedWindow(filter_name);
+        imshow(filter_name, filteredImage);
+        
+        std::string mask_name = "Yellow and White masked image";
+        cv::namedWindow(mask_name);
+        imshow(mask_name, maskedImage);
+        
+        std::string canny_name = "Canny Image";
+        cv::namedWindow(canny_name);
+        imshow(canny_name, cannyImage);
     }
     
 };

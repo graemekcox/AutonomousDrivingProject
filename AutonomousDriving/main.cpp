@@ -36,8 +36,8 @@ int main(int argc, const char * argv[])
     }
     
     // Filtering state
-    // use homogenous smoothing for some dirty filtering
-    //    blur(image, dst, Size(5,5));
+    // use homogenous smoothing for some dirty filtering, NOT IMPLEMENTED
+    image->blurImage(Size(5,5));
     
     // Gaussian blurring with Gaussian kernel: sigma x, sigma y, kernel size
     image->filterImage(0, 0, 3);
@@ -45,21 +45,6 @@ int main(int argc, const char * argv[])
     // Add yellow and white mask to remove stuff we don't care about
     image->maskImage();
 
-    // Displaying different stages
-    if (DISPLAY_IMAGES)
-    {
-        String orig = "Original Image";
-        namedWindow(orig, WINDOW_NORMAL);
-        imshow(orig, image->originalImage);
-        
-        String filter_name = "Gaussian blur filtered image";
-        namedWindow(filter_name);
-        imshow(filter_name, image->filteredImage);
-        
-        String mask_name = "Yellow and White masked image";
-        namedWindow(mask_name);
-        imshow(mask_name, image->maskedImage);
-    }
     //FIXME Should do region of interest here
     // Region of interest
 //    int rows = image.rows;
@@ -79,10 +64,10 @@ int main(int argc, const char * argv[])
     
     image->addEdgesToImage();
     
+    //Display different stages.
     if (DISPLAY_IMAGES)
     {
-        namedWindow("Canny Image");
-        imshow("Canny Image", image->cannyImage);
+        image->displayAllImages();
     }
     //    printf("Convert color\n");
 //    cvtColor(dst, cdst, CV_GRAY2BGR); //convert to color
