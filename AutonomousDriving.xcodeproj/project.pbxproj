@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		092A881E229B74F100F77473 /* AutonomousDriving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AutonomousDriving; sourceTree = BUILT_PRODUCTS_DIR; };
 		092A8821229B74F100F77473 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4012EFD2229EFE2D00687B88 /* imageClass.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = imageClass.hpp; path = AutonomousDriving/imageClass.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +58,9 @@
 		092A8820229B74F100F77473 /* AutonomousDriving */ = {
 			isa = PBXGroup;
 			children = (
-				409FF5DB229EEE6000D15316 /* Resources */,
 				092A8821229B74F100F77473 /* main.cpp */,
+				4012EFD2229EFE2D00687B88 /* imageClass.hpp */,
+				409FF5DB229EEE6000D15316 /* Resources */,
 			);
 			path = AutonomousDriving;
 			sourceTree = "<group>";
