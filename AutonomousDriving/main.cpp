@@ -23,7 +23,7 @@ Mat getHoughLines(Mat src);
 
 int main(int argc, const char * argv[]) {
     
-    Mat image = imread("/Users/graemecox/Documents/Programming/Projects/AutonomousDriving/AutonomousDriving/solidYellowLeft.jpg");
+    Mat image = imread("/Users/graemecox/Documents/Programming/Projects/AutonomousDriving/AutonomousDriving/solidWhiteRight.jpg");
     
     if (image.empty()){
         cout << "Could not open or find the image" << endl;
@@ -60,13 +60,23 @@ int main(int argc, const char * argv[]) {
     namedWindow(mask_name);
     imshow(mask_name, mask);
     }
+    //FIXME Should do region of interest here
+    
     
     cdst = getHoughLines(mask);
 //    displayOriginal(cdst);
+    double alpha = 0.8, beta=1.0, gamma = 0.0;
     
+    //Weighted image
+    Mat weight_img;
+    addWeighted(cdst, alpha, image, beta, gamma, weight_img);
     
-    if (DISPLAY_IMAGES)
-        waitKey(0);
+    String weight_name = "Final Weighted image";
+    namedWindow(weight_name);
+    imshow(weight_name, weight_img);
+    
+//    if (DISPLAY_IMAGES)
+    waitKey(0);
     
     
     return 0;
@@ -105,7 +115,8 @@ Mat getHoughLines(Mat src)
 {
     Mat dst, cdst;
     
-    Canny(src, dst, 50, 150, 3);
+    Canny(src, dst, 50, 150);
+//    Canny
     
     if (DISPLAY_IMAGES){
         namedWindow("Canny Image");
@@ -127,7 +138,7 @@ Mat getHoughLines(Mat src)
      */
     vector<Vec2f> lines;
     int rho = 2;
-    int thesh = 40;
+    int thesh = 60;
     float theta = CV_PI/180;
     int min_line_len = 50;
     int max_line_gap = 200;
