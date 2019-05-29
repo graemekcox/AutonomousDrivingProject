@@ -13,7 +13,6 @@
 using namespace std;
 using namespace cv;
 
-
 #define DISPLAY_IMAGES 0
 
 void displayOriginal(Mat image);
@@ -21,52 +20,47 @@ void displayBrightness(Mat image);
 Mat mask_yw(Mat image);
 Mat getHoughLines(Mat src);
 
-
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[])
+{
+    Mat image = imread("/Users/jaredcox/Documents/Programming/Projects/AutonomousDrivingProject/AutonomousDriving/Resources/Images/solidYellowLeft.jpg");
     
-    Mat image = imread("/Users/graemecox/Documents/Programming/Projects/AutonomousDriving/AutonomousDriving/solidYellowLeft.jpg");
-    
-    if (image.empty()){
+    if (image.empty())
+    {
         cout << "Could not open or find the image" << endl;
         cin.get();
-        return -1;
         
+        return -1;
     }
 
-    
     Mat filtered;
 
     // Filtering state
     // use homogenous smoothing for some dirty filtering
-//    blur(image, dst, Size(5,5));
+    //    blur(image, dst, Size(5,5));
     
     // Gaussian blurring with Gaussian kerne
     int sigma_x = 0, sigma_y = 0, kernel_size=3;
     GaussianBlur(image, filtered, Size(kernel_size, kernel_size), sigma_x, sigma_y);
-    
  
     // Add yellow and white mask to remove stuff we don't care about
     Mat mask, cdst;
     mask = mask_yw(filtered);
     
-    
-    
-    
-    
 
     // Displaying different stages
-    if (DISPLAY_IMAGES){
-    String orig = "Original Image";
-    namedWindow(orig, WINDOW_NORMAL);
-    imshow(orig, image);
-    
-    String filter_name = "Gaussian blur filtered image";
-    namedWindow(filter_name);
-    imshow(filter_name, filtered);
-    
-    String mask_name = "Yellow and White masked image";
-    namedWindow(mask_name);
-    imshow(mask_name, mask);
+    if (DISPLAY_IMAGES)
+    {
+        String orig = "Original Image";
+        namedWindow(orig, WINDOW_NORMAL);
+        imshow(orig, image);
+        
+        String filter_name = "Gaussian blur filtered image";
+        namedWindow(filter_name);
+        imshow(filter_name, filtered);
+        
+        String mask_name = "Yellow and White masked image";
+        namedWindow(mask_name);
+        imshow(mask_name, mask);
     }
     //FIXME Should do region of interest here
     // Region of interest
@@ -91,7 +85,8 @@ int main(int argc, const char * argv[]) {
     Canny(mask, edges, 100, 150);
     //    Canny
     
-    if (DISPLAY_IMAGES){
+    if (DISPLAY_IMAGES)
+    {
         namedWindow("Canny Image");
         imshow("Canny Image", edges);
     }
@@ -143,7 +138,8 @@ Mat mask_yw(Mat image)
     
 }
 
-void displayOriginal(Mat image) {
+void displayOriginal(Mat image)
+{
     String windowname = "Original";
     
     namedWindow(windowname, WINDOW_NORMAL);
@@ -212,17 +208,18 @@ Mat getHoughLines(Mat edges)
     // Draw lines on the image
     vector<Vec4i> linesP;
     HoughLinesP(edges, linesP, 1, CV_PI/180, 10 , min_line_len,max_line_gap);
-    for (size_t i=0; i<lines.size(); i++) {
+    for (size_t i=0; i<lines.size(); i++)
+    {
         Vec4i l = linesP[i];
         line(cdstP, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(255, 0, 0), 3, CV_AA);
     }
-    if (DISPLAY_IMAGES){
+    if (DISPLAY_IMAGES)
+    {
         namedWindow("Hough lines");
         imshow("Hough lines", cdst);
         
         namedWindow("Hough Probalistic1lines");
         imshow("Hough lines", cdstP);
-        
     }
         
     return cdstP;

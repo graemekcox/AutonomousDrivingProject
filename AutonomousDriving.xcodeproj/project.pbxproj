@@ -57,9 +57,33 @@
 		092A8820229B74F100F77473 /* AutonomousDriving */ = {
 			isa = PBXGroup;
 			children = (
+				409FF5DB229EEE6000D15316 /* Resources */,
 				092A8821229B74F100F77473 /* main.cpp */,
 			);
 			path = AutonomousDriving;
+			sourceTree = "<group>";
+		};
+		409FF5DB229EEE6000D15316 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				409FF5DD229EEE7C00D15316 /* Videos */,
+				409FF5DC229EEE7400D15316 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		409FF5DC229EEE7400D15316 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		409FF5DD229EEE7C00D15316 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Videos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T54U3D8D38;
+				DEVELOPMENT_TEAM = PFP3L5UVHS;
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
 					"/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/",
@@ -248,7 +272,9 @@
 					"/usr/local/Cellar/opencv@2/2.4.13.7_3/include/",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv@2/2.4.13.7_3/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include/opencv",
@@ -282,7 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T54U3D8D38;
+				DEVELOPMENT_TEAM = PFP3L5UVHS;
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
 					"/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/",
@@ -290,7 +316,9 @@
 					"/usr/local/Cellar/opencv@2/2.4.13.7_3/include/",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib",
+					"/usr/local/Cellar/opencv@2/2.4.13.7_3/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-I/usr/local/Cellar/opencv/HEAD-b398b57/include/opencv",
