@@ -18,11 +18,6 @@ using namespace cv;
 #define DISPLAY_IMAGES 0
 #define IMAGE_PATH "/Users/jaredcox/Documents/Programming/Projects/AutonomousDrivingProject/AutonomousDriving/Resources/Images/solidYellowLeft.jpg"
 
-void displayOriginal(Mat image);
-void displayBrightness(Mat image);
-Mat mask_yw(Mat image);
-Mat getHoughLines(Mat src);
-
 int main(int argc, const char * argv[])
 {
     ImageClass* image = new ImageClass(IMAGE_PATH);
