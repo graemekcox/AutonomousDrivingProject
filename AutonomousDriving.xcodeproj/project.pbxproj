@@ -242,7 +242,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T54U3D8D38;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/opencv/HEAD-b398b57/include\n/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/\n/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv@2/2.4.13.7_3/include/",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
@@ -281,7 +284,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T54U3D8D38;
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/opencv/HEAD-b398b57/include\n/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/\n/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/lib/pkgconfig/",
+					"/usr/local/Cellar/opencv/HEAD-b398b57/include",
+					"/usr/local/Cellar/opencv@2/2.4.13.7_3/include/",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/Cellar/opencv/HEAD-b398b57/lib\n/usr/local/Cellar/opencv/HEAD-b398b57/lib",
