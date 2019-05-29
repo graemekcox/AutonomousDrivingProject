@@ -12,6 +12,9 @@
 using namespace std;
 using namespace cv;
 
+
+#define DISPLAY_IMAGES 0
+
 void displayOriginal(Mat image);
 void displayBrightness(Mat image);
 Mat mask_yw(Mat image);
@@ -28,15 +31,44 @@ int main(int argc, const char * argv[]) {
         return -1;
         
     }
+    Mat filtered;
+
+    // Filtering state
+    // use homogenous smoothing for some dirty filtering
+//    blur(image, dst, Size(5,5));
     
+    // Gaussian blurring with Gaussian kerne
+    int sigma_x = 0, sigma_y = 0;
+    GaussianBlur(image, filtered, Size(5,5), sigma_x, sigma_y);
     
+ 
     // Add yellow and white mask to remove stuff we don't care about
-    Mat mask;
-    mask = mask_yw(image);
+    Mat mask, cdst;
+    mask = mask_yw(filtered);
 
-
-    Mat cdst = getHoughLines(mask);
-    displayOriginal(cdst);
+    // Displaying different stages
+    if (DISPLAY_IMAGES){
+    String orig = "Original Image";
+    namedWindow(orig, WINDOW_NORMAL);
+    imshow(orig, image);
+    
+    String filter_name = "Gaussian blur filtered image";
+    namedWindow(filter_name);
+    imshow(filter_name, filtered);
+    
+    String mask_name = "Yellow and White masked image";
+    namedWindow(mask_name);
+    imshow(mask_name, mask);
+    }
+    
+    cdst = getHoughLines(mask);
+//    displayOriginal(cdst);
+    
+    
+    if (DISPLAY_IMAGES)
+        waitKey(0);
+    
+    
     return 0;
 }
 
@@ -55,8 +87,7 @@ Mat mask_yw(Mat image)
     cv::inRange(gray, 200,255, mask_w);
     
     bitwise_or(mask_w, mask_y, mask);
-//    displayOriginal(mask_w);
-//    displayOriginal(mask_y);
+    
     return mask;
     
 }
@@ -70,56 +101,20 @@ void displayOriginal(Mat image) {
     destroyWindow(windowname);
 }
 
-void displayBrightness(Mat image) {
-    String windowname = " The Car";
-    
-    // Testing brightness
-    Mat imageBrightHigh50;
-    image.convertTo(imageBrightHigh50, -1, 1, 50);
-    
-    Mat imageBrightHigh100;
-    image.convertTo(imageBrightHigh100,-1, 1, 100);
-    
-    Mat imageBrightLow50;
-    image.convertTo(imageBrightLow50, -1, 1, -50);
-    
-    Mat imageBrightLow100;
-    image.convertTo(imageBrightLow100, -1, 1, -100);
-    
-    String origName = "Original Car";
-    String nameBright50 = "Bright 50 Car";
-    String nameBright100 = "Bright 100 Car";
-    String nameLessBright50 = "Bright -50 Car";
-    String nameLessBright100 = "Bright -100 Car";
-    
-    namedWindow(origName, WINDOW_NORMAL);
-    namedWindow(nameBright50, WINDOW_NORMAL);
-    namedWindow(nameBright100, WINDOW_NORMAL);
-    namedWindow(nameLessBright50, WINDOW_NORMAL);
-    namedWindow(nameLessBright100, WINDOW_NORMAL);
-    
-    imshow(origName, image);
-    imshow(nameBright50, imageBrightHigh50);
-    imshow(nameBright100, imageBrightHigh100);
-    imshow(nameLessBright50, imageBrightLow50);
-    imshow(nameLessBright100, imageBrightHigh100);
-    
-    waitKey(0);
-    destroyWindow(windowname);
-    
-}
-
-
 Mat getHoughLines(Mat src)
 {
     Mat dst, cdst;
+    
     Canny(src, dst, 50, 150, 3);
     
-    printf("Convert color\n");
-    cvtColor(dst, cdst, CV_GRAY2BGR);
+    if (DISPLAY_IMAGES){
+        namedWindow("Canny Image");
+        imshow("Canny Image", dst);
+    }
+//    printf("Convert color\n");
+    cvtColor(dst, cdst, CV_GRAY2BGR); //convert to color
     
-    vector<Vec2f> lines;
-    printf("Hough lines\n");
+
     // 1.output of edge detector (should be grayscale)
     
     /*
@@ -130,6 +125,7 @@ Mat getHoughLines(Mat src)
      5. Theshold, minimum number of intersections to detect a line
      6. srn and stn. Defaults to zero
      */
+    vector<Vec2f> lines;
     int rho = 2;
     int thesh = 40;
     float theta = CV_PI/180;
@@ -151,6 +147,11 @@ Mat getHoughLines(Mat src)
         line( cdst, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
     }
     
+    if (DISPLAY_IMAGES){
+        namedWindow("Hough lines");
+        imshow("Hough lines", cdst);
+    }
+        
     return cdst;
 
 }
