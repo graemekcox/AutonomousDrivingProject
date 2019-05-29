@@ -44,24 +44,11 @@ int main(int argc, const char * argv[])
  
     // Add yellow and white mask to remove stuff we don't care about
     image->maskImage();
-
-    //FIXME Should do region of interest here
-    // Region of interest
-//    int rows = image.rows;
-//    int cols = image.cols;
-//
-//    int start_x = cols/5, start_y = rows/3;
-//    printf("Start = %d %d\n", start_x, start_y);
-//
-//    Rect roi(start_x,0, cols * 3/5,rows);
-//
-//    printf("%d %d\n",rows, cols);
-//
-//    Mat image_roi = image(roi);
-//    displayOriginal(image_roi);
-//
-//    Mat roi_mask = Mat(rows, cols, image.type());
     
+    //Add Region of Interest:  IN PROGRESS!
+    image->addRegionOfInterest();
+
+    //Canny image
     image->addEdgesToImage();
     
     //Display different stages.
@@ -69,13 +56,9 @@ int main(int argc, const char * argv[])
     {
         image->displayAllImages();
     }
-    //    printf("Convert color\n");
-//    cvtColor(dst, cdst, CV_GRAY2BGR); //convert to color
-//
-//    Mat contours;
-////    _, contours, hierarchy = cv::findContours(edges, RETR_TREE, CHAIN_APPROX_NONE);
-//    findContours(edges, contours, RETR_TREE, CHAIN_APPROX_NONE);
-//
+    
+    //IN PROGRESS!
+    image->addContoursToImage();
 
     image->addHoughedLinesToImage(DISPLAY_IMAGES);
     
@@ -86,20 +69,7 @@ int main(int argc, const char * argv[])
     namedWindow(weight_name);
     imshow(weight_name, image->cdstImage);
     
-//    if (DISPLAY_IMAGES)
     waitKey(0);
     
     return 0;
 }
-
-void displayOriginal(Mat image)
-{
-    String windowname = "Original";
-    
-    namedWindow(windowname, WINDOW_NORMAL);
-    imshow(windowname, image);
-    waitKey(0);
-    destroyWindow(windowname);
-}
-
-

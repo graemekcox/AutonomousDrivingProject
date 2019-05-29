@@ -60,9 +60,40 @@ public:
         bitwise_or(mask_w, mask_y, maskedImage);
     }
     
+    void addRegionOfInterest()
+    {
+        //FIXME Should do region of interest here
+        // Region of interest
+        //    int rows = image.rows;
+        //    int cols = image.cols;
+        //
+        //    int start_x = cols/5, start_y = rows/3;
+        //    printf("Start = %d %d\n", start_x, start_y);
+        //
+        //    Rect roi(start_x,0, cols * 3/5,rows);
+        //
+        //    printf("%d %d\n",rows, cols);
+        //
+        //    Mat image_roi = image(roi);
+        //    displayOriginal(image_roi);
+        //
+        //    Mat roi_mask = Mat(rows, cols, image.type());
+    }
+    
     void addEdgesToImage()
     {
         Canny(maskedImage, cannyImage, 100, 150);
+    }
+    
+    void addContoursToImage()
+    {
+        //    printf("Convert color\n");
+        //    cvtColor(dst, cdst, CV_GRAY2BGR); //convert to color
+        //
+        //    Mat contours;
+        ////    _, contours, hierarchy = cv::findContours(edges, RETR_TREE, CHAIN_APPROX_NONE);
+        //    findContours(edges, contours, RETR_TREE, CHAIN_APPROX_NONE);
+        //
     }
     
     void addHoughedLinesToImage(bool displayImages)
